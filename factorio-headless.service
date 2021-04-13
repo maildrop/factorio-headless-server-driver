@@ -1,0 +1,12 @@
+[Unit]
+Descritpion=Factorio Headless Server
+After=network-online.target
+
+[Service]
+Type=simple
+User=factorio
+Group=factorio
+ExecStart=/opt/factorio/bin/x64/factorio --start-server /var/lib/factorio/map/map.zip --server-settings=/var/lib/factorio/config/server-settings.json
+
+[Install]
+WantedBy=multi-user.target
