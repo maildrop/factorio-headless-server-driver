@@ -1,0 +1,22 @@
+#!/bin/sh
+
+PATH=/bin:/usr/bin
+download_url=https://factorio.com/get-download/stable/headless/linux64
+export PATH
+
+cd /opt
+
+
+if [ "$(curl -I -L $download_url --silent | egrep '^ETag:')" != "$(cat factorio_headless.etag)" ] ; then
+
+    #systemctl stop factorio
+    curl -L $download_url --output factorio_headless.tar.xz --silent 
+    curl -I -L $download_url --silent | egrep '^ETag:' > factorio_headless.etag
+    if [ -f factorio_headless.tar.xz ] ; then
+	tar Jxvf factorio_headless.tar.xz
+    fi
+    #systemctl start factorio
+fi
+
+
+
