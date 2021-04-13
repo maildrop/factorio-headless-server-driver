@@ -6,7 +6,7 @@ debian 10.9
 ```
 sudo apt update
 sudo apt upgrade
-sudo apt install git make
+sudo apt install curl git make
 
 git clone ...
 
